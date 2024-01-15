@@ -61,7 +61,7 @@ const api = {
                     players.set(name, player);
                 }
             };
-            return Array.from(players.values());
+            return Array.from(players.values()).sort((a,b) => b.score - a.score).map(players => ({...players, score: players.score / players.matches* 30}));
         },
     },
 };

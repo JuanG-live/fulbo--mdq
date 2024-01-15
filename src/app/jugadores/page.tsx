@@ -14,21 +14,21 @@ export default async function PlayersPage() {
     const players = await api.player.list();
 
     return (
-        <Table className="m-auto max-w-md">
+        <Table className="m-auto max-w-md border">
             <TableCaption>¡Tabla de posiciones, Juan!</TableCaption>
             <TableHeader>
                 <TableRow>
                     <TableHead className="w-[100px]">Nombres</TableHead>
-                    <TableHead>Partidos</TableHead>
-                    <TableHead className="text-right">Valoracion</TableHead>
+                    <TableHead className="text-center">Partidos</TableHead>
+                    <TableHead className="text-center">Valoracion</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
                 {players.map(({ name, score, matches }) => (
                     <TableRow key={name}>
                         <TableCell className="font-medium">{name}</TableCell>
-                        <TableCell>{matches}</TableCell>
-                        <TableCell className="text-right">{score}</TableCell>
+                        <TableCell className="text-center">{matches}</TableCell>
+                        <TableCell className={cn("text-center", {"font-bold text-green-500": score > 0},{"font-bold text-red-500": score< 0})}>{score}</TableCell>
                     </TableRow>
                 ))}
             </TableBody>
