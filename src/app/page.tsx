@@ -20,8 +20,8 @@ export default async function Home() {
     <TableHeader>
       <TableRow>
         <TableHead className="w-[100px]">Fecha</TableHead>
-        <TableHead>Team Pecheras</TableHead>
-        <TableHead>Team Sin Pecheras</TableHead>
+        <TableHead>Team con Pecheras</TableHead>
+        <TableHead>Team sin Pecheras</TableHead>
         <TableHead>Goles</TableHead>
         <TableHead className="text-right">Goles</TableHead>
       </TableRow>
