@@ -28,7 +28,7 @@ export default async function Home() {
     </TableHeader>
     <TableBody>
       {matches.map(({ date, team1, team2, score1, score2 }) => (
-        <TableRow>
+        <TableRow key={date}>
           <TableCell className="font-medium">{date}</TableCell>
           <TableCell>{team1}</TableCell>
           <TableCell>{team2}</TableCell>

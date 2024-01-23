@@ -6,7 +6,7 @@ export default async function BuilderPage(){
     const players = await api.player.list();
     
     async function createTeams(formData: FormData) {
-        "use server"
+        "use server";
 
         const players = formData.getAll("player");
 
@@ -18,5 +18,5 @@ export default async function BuilderPage(){
 
         redirect(`/armador/partido?${searchParams.toString()}`);
     }
-    return <BuilderPageClient onCreate={createTeams} players={players} />
+    return <BuilderPageClient players={players} onCreate={createTeams}  />
 }
