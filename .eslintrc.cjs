@@ -23,6 +23,7 @@ module.exports = {
     },
   },
   rules: {
+    "@typescript-eslint/no-unsafe-assignment": "off",
     "prettier/prettier": [
       "warn",
       {
