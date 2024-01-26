@@ -1,10 +1,10 @@
-import {Match} from './types';
-import {Player} from './types';
+import { Match } from './types';
+import { Player } from './types';
 
 const api = {
     match: {
         list: async (): Promise<Match[]> => {
-            return fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vQGuRjh8ZgUgJe9TWISFXqFisqIK1oWG9DOMu746Q-kywOfhT2bGSyGCisIY6GQqFZPPyYeE6Iovmmb/pubhtml',
+            return fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTUOQDD1R6O6BnhjaT75WqN28x5J3fB5JQkZcRVhBRvwPWMOsgf1r2DcBVz3BIKXQRy2aYV6FMZQnFa/pub?output=tsv",
                 {next: {tags: ["matches"]}},
             )
                 .then((res) => res.text())
@@ -21,8 +21,8 @@ const api = {
                                 team2,
                                 score1: parseInt(score1),
                                 score2: parseInt(score2),
-                            }
-                        })
+                            };
+                        });
                 });
         },
     },
@@ -32,7 +32,9 @@ const api = {
             const matches = await api.match.list();
             const players = new Map<string, Player>();
 
-            for (const { team1, team2, score1, score2 } of matches) {
+            for (const {team1, team2, score1, score2} of matches) {
+                if (!team1 || !team2) break;
+
                 const players1 = team1.split(', ');
                 const players2 = team2.split(', ');
 
@@ -68,9 +70,10 @@ const api = {
             };
             return Array.from(players.values())
             .sort((a, b) => b.score - a.score)
-            .map(players => ({ 
+            .map((players) => ({ 
                 ...players, 
-                score: Math.round(players.score / players.matches) * 30 }));
+                score: Math.round(players.score / players.matches) * 30/100,
+            }));
         },
     },
 };

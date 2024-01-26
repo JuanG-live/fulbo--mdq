@@ -1,5 +1,5 @@
 import api from "@/api";
-import { cn } from "@/lib/utils";
+import {cn} from "@/lib/utils";
 import {
     Table,
     TableBody,
