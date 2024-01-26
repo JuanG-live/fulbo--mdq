@@ -5,7 +5,7 @@ const api = {
     match: {
         list: async (): Promise<Match[]> => {
             return fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTUOQDD1R6O6BnhjaT75WqN28x5J3fB5JQkZcRVhBRvwPWMOsgf1r2DcBVz3BIKXQRy2aYV6FMZQnFa/pub?output=tsv",
-                {next: {tags: ["matches"]}},
+                 {next: {tags: ["matches"]}},
             )
                 .then((res) => res.text())
                 .then((text) => {
