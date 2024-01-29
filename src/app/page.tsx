@@ -13,7 +13,7 @@ import {
 
 export default async function Home() {
   const matches = await api.match.list()
-
+  console.log(matches);
   return( 
   <Table className = "border">
     <TableCaption>Jueves a las 21:00</TableCaption>
