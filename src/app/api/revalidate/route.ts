@@ -1,7 +1,7 @@
-import {revalidateTag} from "next/cache";
+import {revalidatePath, revalidateTag} from "next/cache";
 
 export async function GET() {
-  revalidateTag("matches");
+  revalidatePath("matches");
 
   return Response.json({revalidated: true});
 }
